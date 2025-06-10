@@ -24,7 +24,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: 🔄 JSONLを再生成
-        run: "python KeTCindy_Learningfile/import\ jsonl.py"
+        run: "python KeTCindy_Learningfile/import jsonl.py"
 
       - name: ⬆️ 更新されたJSONLをプッシュ
         run: |
