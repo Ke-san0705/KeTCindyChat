@@ -3,7 +3,7 @@ import re
 import json
 
 # 入力と出力ディレクトリのパス（必要に応じて変更）
-input_dir = "./output_md"
+input_dir = "./KeTCindy_Learningfile/output_md"
 output_jsonl_path = "./tagged_chatbot_data.jsonl"
 
 # タグ付けルール：キーワード → タグ
