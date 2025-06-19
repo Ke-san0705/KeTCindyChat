@@ -1,0 +1,6 @@
+{"prompt": "KeTCindyとは", "completion": "**KeTCindy**は、動的幾何ソフトウェア **Cinderella 2** 上で動作する**プラグイン型のスクリプトライブラリ**です。  \n主に **LaTeX / TikZ** などTeX系文書に挿入するための**高品質な図版を生成**することを目的としています。\n- GUI操作 + スクリプトによる図作成が可能  \n- TeXやPDF、HTML教材の出力に対応  \n- 外部の数式処理ソフトとも連携可能（R, Maximaなど）\n---"}
+{"prompt": "CindyScriptとは", "completion": "**CindyScript**は、Cinderellaに組み込まれている**組み込み型プログラミング言語**です。\n- 点や線などの**幾何オブジェクトの制御**  \n- **アニメーションや数式処理**  \n- KeTCindyのコマンドもこのCindyScriptで記述・実行可能  \n---"}
+{"prompt": "両者の関係性", "completion": "| 項目 | 内容 |\n|------|------|\n| KeTCindy | CindyScriptを拡張したライブラリ群 |\n| 利用方法 | Cinderella上でCindyScriptとしてKeTCindyの関数・コマンドを記述 |\n| 出力 | LaTeX, TikZ, PDF, HTML, 外部数式ソフト用データ など |\n---"}
+{"prompt": "KeTCindyの動作の流れ", "completion": "1. **Cinderellaで作図**  \n   点や線、多角形などをGUIで配置。\n2. **CindyScriptエディタで制御**  \n   KeTCindyコマンドを使って図の構成や出力形式を定義。\n3. **データ出力・外部連携**  \n   作図データを外部ソフト（例：R, Maxima）に渡して計算や整形を行い、最終的にTeXやPDF等を生成。\n---"}
+{"prompt": "KeTCindyの特徴・拡張性", "completion": "-  **400以上のコマンド**が用意された豊富なライブラリ  \n-  **R / Maxima ** など外部ソフトと連携可能  \n-  関数グラフ、多面体、空間図形など**教材向け機能が充実**  \n-  Web教材への応用：**KeTCindyJS**でHTML出力も可能  \n---"}
+{"prompt": "まとめ", "completion": "KeTCindyは、CinderellaのGUIとCindyScriptのスクリプト機能を統合し、**教育・研究・教材作成**の現場で活用できる強力な図版生成ツールです。  \nTeX文書との親和性が非常に高く、**数学・物理の教材開発やプレゼン資料作成に最適**です。\n---"}

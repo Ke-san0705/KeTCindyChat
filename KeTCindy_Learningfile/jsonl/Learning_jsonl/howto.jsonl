@@ -1,0 +1,6 @@
+{"prompt": "始め方", "completion": "Cinderellaを起動し、テンプレートを開く   \nテンプレートは、`./doc/work/template`に入っている。\nこのテンプレートをもとに、プロジェクトを作成する。\ncindyscriptは、  スクリプトタブのcindyscriptから開いて編集する。\n主にdrawスロットのコードを編集する"}
+{"prompt": "TeXで使える形にする", "completion": "ParentボタンもしくはFigureボタン(figpdf関数を用いた場合は、Parentボタン)を押すとcdyファイルと同じディレクトリに./fig/(ファイル名).texが出力される。\nこのTeXファイルを適当なテキストエディタで開けば作った図が外部で利用できる"}
+{"prompt": "pdfに出力する", "completion": "ParentボタンもしくはFigureボタン(figpdf関数を用いた場合は、Parentボタン)を押すとcdyファイルと同じディレクトリに./fig/(ファイル名).pdfが出力され Sumatra PDFが起動しプレビューが表示される。"}
+{"prompt": "HTMLに出力する", "completion": "「ファイルタブからHTML書き出す」からHTMLファイルを作成し、その上でketjsonボタンを押すと./(ファイル名)json.htmlが作成されるので、それを開く。なおjsonという名前がつくが、意味的にはjs+onであり、ファイル形式のjsonとは全く関係ない"}
+{"prompt": "関数の使用例を調べる", "completion": "Help関数を以下のように書いて実行する\n```\nHelp(\"Listplot\");//Listplot関数に関するHelpを取得する\n```"}
+{"prompt": "ボタンを作成する", "completion": "「文字を追加」ボタンを押し文字列を入力の指示に従う。作成したらインスペクタを押しボタンとして使うを選ぶ。そうすることでボタンとして使うことができる。"}

@@ -1,30 +1,36 @@
-簡単な仕組み
+# KeTCindyChat の簡単な仕組み
 
-output_md/*.mdにて
-KeTCindyに関するリファレンス・解説をMarkdown形式で記述
+## ディレクトリ構成
 
-内容例：インストール方法、関数の使い方、図形描画方法など
+- `KeTCindy_Learningfile./Knowlage`  
+  参考にした資料を格納
 
-tagged_chatbot_data.jsonlにて
-.mdの内容を構造化された形式（title + content）に変換して蓄積
+- `KeTCindy_Learningfile./md`  
+  KeTCindyに関するリファレンス・資料をMarkdown形式で記述
 
-KeTCindyChat.py
-ユーザーの質問をEmbeddingして、tagged_chatbot_data.jsonl の中から意味的に近いもの（上位K件）を検索（FAISS使用）
+- `KeTCindy_Learningfile./jsonl`  
+  KeTCindyに関するリファレンス・資料をjsonl形式で記述
 
-その結果を文脈としてOpenAI GPT-4に与え、最も適切なKeTCindyコードや解説を生成
+- 各種変換コードは `KeTCindy_Learningfile` 内に配置
 
-tagged_chatbot_data.jsonlの更新方法
-1.output_md/ フォルダに .md ファイルを追加
-2.import jsonl.py を実行（たとえばPython環境で python import\ jsonl.py）
-3.tagged_chatbot_data.jsonl が再生成・更新され、KeTCindyChatが新しい知識を使えるように
+## KeTCindyChat.py の仕組み
 
+1. ユーザーの質問を **Embedding** でベクトル化
+2. `tagged_chatbot_data.jsonl` から意味的に近い情報（上位K件）を **FAISS** で検索
+3. 得られた結果を文脈として **OpenAI GPT-4** に入力し、最も適切なKeTCindyコードや解説を生成
 
-アップデート予定(願望)
+## `.jsonl` の更新手順
 
-・会話内容を今後の回答のために学習し反映させる。
-・現状のリファレンスと既にあるコードとその結果を記したファイルを使い学習、自身で学習用mdを作成する。
-・特定の単語を入力すると回答が返ってくる
-・Githubに組み込む
+1. `md./Learning_md` に `.md` ファイルを追加
+2. `md_to_jsonl.py` を実行  
+   （例：`python md_to_jsonl.py`）
+3. `jsonl./Learning_jsonl` に再生成・更新され、KeTCindyChatが新しい知識を活用可能に
 
+---
 
+# アップデート予定（願望）
 
+- 会話内容を今後の回答のために学習・反映させる
+- 現在のリファレンスと既存コード・実行結果を活用して、学習用Markdownを自動生成する
+- 特定の単語入力で即座に回答が返る辞書的応答機能を実装
+- GitHubへの組み込み（**済み**）

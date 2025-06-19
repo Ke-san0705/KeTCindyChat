@@ -1,0 +1,13 @@
+PS C:\Users\kensh\Downloads\sample_fixed> python folder_to_jsonl.py
+⚠️ Skipped: sample\01figure\generate_triangle_circle.md（一部のセクションが見つかりません）
+⚠️ Skipped: sample\02graph\tangent_to_sinx.md（一部のセクションが見つかりません）
+⚠️ Skipped: sample\04bezier\closed_spline_circle_comparison.md（一部のセクションが見つかりません）
+⚠️ Skipped: sample\04bezier\dogwalk_bezier_path.md（一部のセクションが見つかりません）
+⚠️ Skipped: sample\04bezier\heart_bezier_overlay.md（一部のセクションが見つかりません）
+⚠️ Skipped: sample\05spacefigure\3dpoint_axes_vector.md（一部のセクションが見つかりません）
+⚠️ Skipped: sample\05spacefigure\perpendicular_projection_3d.md（一部のセクションが見つかりません）
+⚠️ Skipped: sample\05spacefigure\plane_intersection_3d.md（一部のセクションが見つかりません）
+⚠️ Skipped: sample\05spacefigure\spacecurve_visualization.md（一部のセクションが見つかりません）
+⚠️ Skipped: sample\05spacefigure\tetra_basic.md（一部のセクションが見つかりません）
+✅ 48 entries written to output.jsonl
+PS C:\Users\kensh\Downloads\sample_fixed>

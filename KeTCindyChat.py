@@ -6,25 +6,37 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from tqdm import tqdm
 
-# --- 環境変数からAPIキーを読み込み ---
+# --- 環境変数の読み込み ---
 load_dotenv()
 client = OpenAI()
 
 # --- 設定 ---
 EMBED_MODEL = "text-embedding-3-small"
-JSONL_PATH = "tagged_chatbot_data.jsonl"
+DATA_DIRS = [
+    "./KeTCindy_Learningfile/jsonl/Learning_jsonl",
+    "./KeTCindy_Learningfile/jsonl/Np_jsonl",
+    "./KeTCindy_Learningfile/jsonl/Samplecode_jsonl"
+]
 TOP_K = 3
 REJECT_PATTERNS = ["import ", "def ", "matplotlib", "plt.", "print(", "Python"]
 
-# --- JSONLファイル読み込み ---
+# --- JSONLデータ読み込み ---
 entries = []
-with open(JSONL_PATH, "r", encoding="utf-8") as f:
-    for line in f:
-        entries.append(json.loads(line))
+for data_dir in DATA_DIRS:
+    for fname in os.listdir(data_dir):
+        if fname.endswith(".jsonl"):
+            full_path = os.path.join(data_dir, fname)
+            with open(full_path, "r", encoding="utf-8") as f:
+                for line in f:
+                    obj = json.loads(line)
+                    entries.append(obj)
 
 # --- Embedding生成 ---
 print("🔄 ベクトルを生成中...")
-texts = [entry["content"] for entry in entries]
+# 埋め込み用テキストの抽出とフィルタリング
+texts = [entry.get("content") or entry.get("completion") for entry in entries]
+texts = [t for t in texts if t and t.strip()]  # ← これを追加（空・Noneを除外）
+
 embeddings = []
 
 for i in tqdm(range(0, len(texts), 100)):
@@ -48,16 +60,15 @@ def search_and_respond(query):
 
     D, I = index.search(np.array([query_vec]).astype("float32"), TOP_K)
     results = [entries[i] for i in I[0]]
-    context = "\n\n".join([f"【{r['title']}】\n{r['content']}" for r in results])
-
-    system_prompt = (
-        "あなたはKeTCindyという数学ソフトに詳しい専門アシスタントです。"
-        "出力するコードは必ずKeTCindy（CindyScriptやKeTCindyJS）の構文を使用してください。"
-        "Pythonや他のプログラミング言語で出力しないでください。"
-        "KeTCindyでの表現が難しい場合は、その理由と近い構文を説明してください。"
+    context = "\n\n".join(
+        [f"【{r.get('title') or r.get('prompt')}】\n{r.get('content') or r.get('completion')}" for r in results]
     )
 
-    for attempt in range(2):  # フィルター付き再生成を1回まで許容
+    # --- システムプロンプト読み込み ---
+    with open("system_prompt.txt", "r", encoding="utf-8") as f:
+        system_prompt = f.read()
+
+    for attempt in range(2):
         response = client.chat.completions.create(
             model="gpt-4",
             messages=[
@@ -71,7 +82,7 @@ def search_and_respond(query):
             return content
     return "⚠️ KeTCindy形式での出力ができませんでした。質問をもう少し具体的にして再度お試しください。"
 
-# --- 実行 ---
+# --- 実行セクション ---
 if __name__ == "__main__":
     print("KeTCindy ChatBot へようこそ")
     while True:
@@ -83,4 +94,3 @@ if __name__ == "__main__":
             print("💡 回答:", answer, "\n")
         except Exception as e:
             print("⚠️ エラー:", str(e))
-
