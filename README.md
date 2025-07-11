@@ -36,4 +36,4 @@
 
 # samplecodeフォルダについて
 
-フォルダ内に入っているhowtowrite.mdをを参考にtemple.mdをコピペし、各ソースコードに対応した.mdを作成してください。ファイル名と保存場所は.cdyと対応させてください。
+フォルダ内に入っているhowtowrite.mdをを参考にtemple.mdをコピペし、各ソースコードに対応した.mdを作成してください。ファイル名と保存場所は"ketcindy\doc\work\templates"にある.cdyと対応させてください。自分で新たに作成した.cdyの.mdを保存する際にはoriginalフォルダ内に.cdyと.mdを保存してください。名前は両方統一させてください。
